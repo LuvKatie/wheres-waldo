@@ -1,0 +1,30 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+button#how-to-play {
+    width: 80%;
+    height: 48px;
+    background-color: pink;
+
+    margin-left: 12px;
+    margin-bottom: 24px;
+
+    letter-spacing: 1px;
+    color: black;
+    border: 2px solid white;
+}
+
+button#how-to-play:hover {
+    font-weight: 600;
+    background-color: transparent;
+    border-top: 3px solid red;
+    border-bottom: 3px solid red;
+    cursor: pointer;
+}
+
+#how-to-modal {
+
+}
