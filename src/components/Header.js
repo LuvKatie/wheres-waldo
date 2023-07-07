@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/header.css";
 import mew from "../images/mew.png";
 import abra from "../images/abra.png";
 import ponyta from "../images/ponyta.png";
 import eevee from "../images/eevee.png";
+import ScoreTimer from "./ScoreTimer";
+import { AppContext } from "../ContextProvider";
 
 const Header = () => {
+  const { startTimer } = useContext(AppContext);
   return (
     <nav aria-label="navigation bar">
       <div id="sprite-container">
@@ -17,9 +20,7 @@ const Header = () => {
       <span aria-label="app-title" id="app-title">
         Pokemon Where's Waldo
       </span>
-      <span data-testid="highscore-timer" id="highscore-timer">
-        00:00
-      </span>
+      {startTimer && <ScoreTimer />}
     </nav>
   );
 };

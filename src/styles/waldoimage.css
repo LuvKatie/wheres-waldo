@@ -11,12 +11,12 @@
     grid-row: 2 / 3;
     grid-column: 2 / 3;
 
-    width: 80%;
-    height: 95%;
+    width: 1500px;
+    height: 666px;
 }
 
 #waldo-image {
-    object-fit: contain;
+    object-fit: fill;
     width: 100%;
     height: 100%;
     border: 3px solid grey;
@@ -52,4 +52,47 @@
     border: 2px solid blue;
     color: blue;
     transition: all 500ms ease;
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+}
+
+.uncover {
+    width: 0%;
+    height: 0%;
+}
+
+#mew-box, #abra-box, #ponyta-box, #eevee-box {
+    position: absolute;
+    background: rgb(255, 0, 0, 0.5);
+}
+
+#mew-box {
+    right: 30%;
+    top: 0;
+    height: 17%;
+    width: 9%;
+}
+
+#abra-box {
+    bottom: 21%;
+    left: 43%;
+    height: 14%;
+    width: 5%;
+}
+
+#ponyta-box {
+    bottom: 33%;
+    left: 33%;
+    height: 13%;
+    width: 8%;
+}
+
+#eevee-box {
+    right: 0;
+    top: 20%;
+    height: 12%;
+    width: 5%;
 }

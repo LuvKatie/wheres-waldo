@@ -23,7 +23,7 @@ describe("App / Main components", () => {
     expect(pokemonImage).toBeInTheDocument();
   });
 
-  it("Render Navbar with timer and character sprite images", () => {
+  it("Render Navbar character sprite images and title", () => {
     render(
       <MemoryRouter>
         <App />
@@ -35,7 +35,6 @@ describe("App / Main components", () => {
     const ponytaSprite = screen.getByRole("img", { name: "ponyta-sprite" });
     const eeveeeSprite = screen.getByRole("img", { name: "eevee-sprite" });
     const abraSprite = screen.getByRole("img", { name: "abra-sprite" });
-    const scoreTimer = screen.getByTestId("highscore-timer");
     const title = screen.getByLabelText("app-title");
 
     expect(navbar).toBeInTheDocument();
@@ -43,7 +42,6 @@ describe("App / Main components", () => {
     expect(navbar).toContainElement(ponytaSprite);
     expect(navbar).toContainElement(eeveeeSprite);
     expect(navbar).toContainElement(abraSprite);
-    expect(navbar).toContainElement(scoreTimer);
     expect(navbar).toContainElement(title);
   });
 
