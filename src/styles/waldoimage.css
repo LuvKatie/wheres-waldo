@@ -64,33 +64,33 @@
     height: 0%;
 }
 
-#mew-box, #abra-box, #ponyta-box, #eevee-box {
+#mew, #abra, #ponyta, #eevee {
     position: absolute;
     background: rgb(255, 0, 0, 0.5);
 }
 
-#mew-box {
+#mew {
     right: 30%;
     top: 0;
     height: 17%;
     width: 9%;
 }
 
-#abra-box {
+#abra {
     bottom: 21%;
     left: 43%;
     height: 14%;
     width: 5%;
 }
 
-#ponyta-box {
+#ponyta {
     bottom: 33%;
     left: 33%;
     height: 13%;
     width: 8%;
 }
 
-#eevee-box {
+#eevee {
     right: 0;
     top: 20%;
     height: 12%;
