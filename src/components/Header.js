@@ -9,6 +9,7 @@ import { AppContext } from "../ContextProvider";
 
 const Header = () => {
   const { startTimer } = useContext(AppContext);
+
   return (
     <nav aria-label="navigation bar">
       <div id="sprite-container">

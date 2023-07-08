@@ -1,8 +1,8 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { act } from "react-test-renderer";
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+// import { act } from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
+// import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 
@@ -45,30 +45,16 @@ describe("App / Main components", () => {
     expect(navbar).toContainElement(title);
   });
 
-  it("Render how-to-play button and hide/show modal upon clicking", async () => {
-    const user = userEvent.setup();
+  it("Render High Score leaderboard", () => {
     render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
     );
-    const howToPlayBtn = screen.getByRole("button", { name: "how-to-play" });
-    const howToPlayModal = screen.getByTestId("how-to-modal");
+    const leaderboard = screen.getByRole("region", { name: "leaderboard" });
+    const boardChildren = screen.getByLabelText("board-list");
 
-    expect(howToPlayBtn).toBeInTheDocument();
-    expect(howToPlayModal).toHaveClass("hide-modal");
-
-    await act(async () => {
-      await user.click(howToPlayBtn);
-    });
-    await waitFor(() => {
-      expect(howToPlayModal).toHaveClass("show-modal");
-    });
-    await act(async () => {
-      await user.click(howToPlayBtn);
-    });
-    await waitFor(() => {
-      expect(howToPlayModal).toHaveClass("hide-modal");
-    });
+    expect(leaderboard).toBeInTheDocument();
+    expect(boardChildren.childNodes.length).toEqual(10);
   });
 });

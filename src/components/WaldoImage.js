@@ -3,12 +3,19 @@ import "../styles/waldoimage.css";
 import pokemonWaldo from "../images/pokemon.jpg";
 import { AppContext } from "../ContextProvider";
 
-const WaldoImage = () => {
+const WaldoImage = (props) => {
   const { setStartTimer } = useContext(AppContext);
   const imageCover = useRef();
+  const { pokemon } = props;
 
-  function grabCoords(pos) {
-    console.log(pos.target);
+  function verifyGuess(pos) {
+    const names = pokemon.map((pokemon) => pokemon.name);
+    if (names.includes(pos.target.id)) {
+      console.log(pos.target);
+      return;
+    }
+
+    console.log("Wrong guess!");
   }
 
   return (
@@ -18,7 +25,7 @@ const WaldoImage = () => {
         src={pokemonWaldo}
         id="waldo-image"
         onClick={(e) => {
-          grabCoords(e);
+          verifyGuess(e);
         }}
       ></img>
       <div
@@ -39,10 +46,10 @@ const WaldoImage = () => {
           Start
         </button>
       </div>
-      <div id="mew-box" onClick={(e) => grabCoords(e)}></div>
-      <div id="abra-box" onClick={(e) => grabCoords(e)}></div>
-      <div id="ponyta-box" onClick={(e) => grabCoords(e)}></div>
-      <div id="eevee-box" onClick={(e) => grabCoords(e)}></div>
+      <div id="mew" onClick={(e) => verifyGuess(e)}></div>
+      <div id="abra" onClick={(e) => verifyGuess(e)}></div>
+      <div id="ponyta" onClick={(e) => verifyGuess(e)}></div>
+      <div id="eevee" onClick={(e) => verifyGuess(e)}></div>
     </>
   );
 };
