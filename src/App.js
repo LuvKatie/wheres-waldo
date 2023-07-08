@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/app.css";
 import Header from "./components/Header";
-import GameGuide from "./components/GameGuide";
+import Leaderboard from "./components/Leaderboard";
 import WaldoImage from "./components/WaldoImage";
 import ContextProvider from "./ContextProvider";
 
@@ -10,7 +10,7 @@ function App() {
     <ContextProvider>
       <div className="main-container">
         <Header />
-        <GameGuide />
+        <Leaderboard />
         <main className="image-container" aria-label="image-container">
           <WaldoImage />
         </main>
