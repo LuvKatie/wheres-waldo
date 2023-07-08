@@ -37,7 +37,20 @@ describe("WaldoImage component functionality", () => {
     expect(imageCover).toHaveClass("uncover");
   });
 
-  it.skip("When right clicking image show sprite options", () => {});
+  it.skip("When clicking image show sprite options", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    const imageContainer = screen.getByRole("main", {
+      name: "image-container",
+    });
+    const spriteMenu = screen.getByTestId("sprite-menu");
 
-  it.skip("When clicking on option return callback function", () => {});
+    expect(spriteMenu).toHaveClass("hideSprites");
+    await user.click(imageContainer);
+    expect(spriteMenu).toHaveClass("showSprites");
+  });
 });

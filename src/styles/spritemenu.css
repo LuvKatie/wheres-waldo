@@ -1,0 +1,35 @@
+#sprite-menu {
+    position: absolute;
+    z-index: 100;
+    background-color: rgb(119, 226, 48);
+}
+
+.sprite-option {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.sprite-option:hover {
+    background-color: pink;
+    cursor: pointer;
+}
+
+.sprite-option img {
+    object-fit: cover;
+    height: 34px;
+    width: 34px;
+}
+
+.sprite-option p {
+    font-size: 21px;
+    margin: 0px 6px;
+}
+
+.hideSprites { 
+    visibility: hidden;
+}
+
+.showSprites {
+    visibility: visible;
+}
