@@ -37,18 +37,19 @@ describe("WaldoImage component functionality", () => {
     expect(imageCover).toHaveClass("uncover");
   });
 
-  it.skip("When clicking image show sprite options", async () => {
+  it("When clicking image show sprite options", async () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
     );
-    const imageContainer = screen.getByRole("main", {
-      name: "image-container",
+    const startBtn = screen.getByRole("button", { name: "start-game" });
+    const imageContainer = screen.getByRole("img", {
+      name: "pokemon-waldo",
     });
     const spriteMenu = screen.getByTestId("sprite-menu");
-
+    await user.click(startBtn);
     expect(spriteMenu).toHaveClass("hideSprites");
     await user.click(imageContainer);
     expect(spriteMenu).toHaveClass("showSprites");

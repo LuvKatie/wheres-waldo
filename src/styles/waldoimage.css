@@ -9,7 +9,7 @@
     align-self: center;
 
     grid-row: 2 / 3;
-    grid-column: 2 / 3;
+    grid-column: 1 / 3;
 
     width: 1500px;
     height: 666px;
@@ -55,18 +55,22 @@
 }
 
 .cover {
+    visibility: visible;
     width: 100%;
     height: 100%;
 }
 
 .uncover {
+    visibility: hidden;
     width: 0%;
     height: 0%;
 }
 
 #mew, #abra, #ponyta, #eevee {
     position: absolute;
-    background: rgb(255, 0, 0, 0.5);
+    background: rgb(0, 255, 13, 0.3);
+    border-radius: 33%;
+    border: 5px solid rgb(0, 255, 13);
 }
 
 #mew {
