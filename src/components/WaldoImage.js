@@ -1,28 +1,67 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import "../styles/waldoimage.css";
 import pokemonWaldo from "../images/pokemon.jpg";
 import { AppContext } from "../ContextProvider";
 import SpriteMenu from "./SpriteMenu";
 
 const WaldoImage = (props) => {
-  const { setStartTimer } = useContext(AppContext);
+  const { selected, setSelected, setStartTimer } = useContext(AppContext);
   const imageCover = useRef();
   const spriteMenu = document.getElementById("sprite-menu");
   const { pokemon } = props;
 
-  function verifyGuess(pos) {
-    displayMenu(pos);
+  useEffect(() => {
+    if (!selected) {
+      return;
+    }
+    console.log(selected);
+  }, [selected]);
 
+  function verifyGuess(option) {
+    const optionName = option.parentNode.lastChild.textContent.toLowerCase();
+    if (selected === optionName) {
+      correctGuess(option, optionName);
+      return;
+    }
+    wrongGuess();
+  }
+
+  function correctGuess(option, optionName) {
+    const headerSprite = document.querySelector(`.${optionName}`);
+    headerSprite.classList.add("correct-guess");
+    document.getElementById(`${optionName}`).classList.remove("hide-hitbox");
+    console.log(option.parentNode);
+  }
+
+  function wrongGuess() {
+    const sprites = document.querySelectorAll("#sprite-container img");
+    for (let i = 0; i < sprites.length; i++) {
+      if (!sprites[i].classList.contains("correct-guess")) {
+        sprites[i].classList.add("wrong-guess");
+        setTimeout(() => {
+          sprites[i].classList.remove("wrong-guess");
+        }, 1000);
+      }
+    }
+  }
+
+  function handleClick(pos) {
+    changeState(pos);
+    displayMenu(pos);
+  }
+
+  function changeState(pos) {
     const names = pokemon.map((pokemon) => pokemon.name);
     if (names.includes(pos.target.id)) {
-      console.log(pos.target);
+      setSelected(`${pos.target.id}`);
       return;
     }
 
-    console.log("Wrong guess!");
+    setSelected("wrong");
   }
 
   function displayMenu(pos) {
+    console.log(pos.target);
     if (spriteMenu.classList.contains("hideSprites")) {
       spriteMenu.classList.toggle("hideSprites");
       spriteMenu.classList.toggle("showSprites");
@@ -42,7 +81,7 @@ const WaldoImage = (props) => {
         src={pokemonWaldo}
         id="waldo-image"
         onClick={(e) => {
-          verifyGuess(e);
+          handleClick(e);
         }}
       ></img>
       <div
@@ -63,11 +102,27 @@ const WaldoImage = (props) => {
           Start
         </button>
       </div>
-      <div id="mew" onClick={(e) => verifyGuess(e)}></div>
-      <div id="abra" onClick={(e) => verifyGuess(e)}></div>
-      <div id="ponyta" onClick={(e) => verifyGuess(e)}></div>
-      <div id="eevee" onClick={(e) => verifyGuess(e)}></div>
-      <SpriteMenu />
+      <div
+        className="hide-hitbox"
+        id="mew"
+        onClick={(e) => handleClick(e)}
+      ></div>
+      <div
+        className="hide-hitbox"
+        id="abra"
+        onClick={(e) => handleClick(e)}
+      ></div>
+      <div
+        className="hide-hitbox"
+        id="ponyta"
+        onClick={(e) => handleClick(e)}
+      ></div>
+      <div
+        className="hide-hitbox"
+        id="eevee"
+        onClick={(e) => handleClick(e)}
+      ></div>
+      <SpriteMenu verifyGuess={verifyGuess} />
     </>
   );
 };

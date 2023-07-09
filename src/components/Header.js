@@ -13,10 +13,10 @@ const Header = () => {
   return (
     <nav aria-label="navigation bar">
       <div id="sprite-container">
-        <img aria-label="mew-sprite" src={mew}></img>
-        <img aria-label="abra-sprite" src={abra}></img>
-        <img aria-label="ponyta-sprite" src={ponyta}></img>
-        <img aria-label="eevee-sprite" src={eevee}></img>
+        <img className="mew" aria-label="mew-sprite" src={mew}></img>
+        <img className="abra" aria-label="abra-sprite" src={abra}></img>
+        <img className="ponyta" aria-label="ponyta-sprite" src={ponyta}></img>
+        <img className="eevee" aria-label="eevee-sprite" src={eevee}></img>
       </div>
       <span aria-label="app-title" id="app-title">
         Pokemon Where's Waldo

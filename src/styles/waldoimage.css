@@ -55,15 +55,21 @@
 }
 
 .cover {
-    visibility: visible;
     width: 100%;
     height: 100%;
 }
 
 .uncover {
-    visibility: hidden;
     width: 0%;
     height: 0%;
+}
+
+#abra.hide-hitbox, 
+#eevee.hide-hitbox, 
+#ponyta.hide-hitbox, 
+#mew.hide-hitbox {
+    background-color: transparent;
+    border: 0px;
 }
 
 #mew, #abra, #ponyta, #eevee {
