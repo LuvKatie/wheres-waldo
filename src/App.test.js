@@ -44,4 +44,15 @@ describe("App / Main components", () => {
     expect(navbar).toContainElement(abraSprite);
     expect(navbar).toContainElement(title);
   });
+
+  it("Render High Score leaderboard", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    const leaderboard = screen.getByRole("region", { name: "leaderboard" });
+
+    expect(leaderboard).toBeInTheDocument();
+  });
 });

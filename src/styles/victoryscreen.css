@@ -1,0 +1,53 @@
+#victory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    justify-self: center;
+    margin: 40px;
+
+    background-color: pink;
+    width: 500px;
+    height: 300px;
+}
+
+#name-input {
+    margin: 40px;
+    font-size: 22px;
+    height: 28px;
+    border: none;
+    padding: 4px;
+    text-align: center;
+}
+
+#name-input:focus {
+    outline: none;
+}
+
+#player-score {
+    width: 80%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#submit-score {
+    width: 150px;
+    height: 40px;
+
+    border: none;
+    border-radius: 16px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: rgb(50, 50, 219);
+    background-color: white;
+    cursor: pointer;
+}
+
+#submit-score:hover {
+    color: rgb(255, 255, 255);
+    background-color:rgb(156, 156, 255)
+}

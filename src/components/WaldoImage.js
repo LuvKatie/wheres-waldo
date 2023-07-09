@@ -8,14 +8,7 @@ const WaldoImage = (props) => {
   const { selected, setSelected, setStartTimer } = useContext(AppContext);
   const imageCover = useRef();
   const spriteMenu = document.getElementById("sprite-menu");
-  const { pokemon } = props;
-
-  useEffect(() => {
-    if (!selected) {
-      return;
-    }
-    console.log(selected);
-  }, [selected]);
+  const { pokemon, setVictory, setScore } = props;
 
   function verifyGuess(option) {
     const optionName = option.parentNode.lastChild.textContent.toLowerCase();
@@ -30,7 +23,7 @@ const WaldoImage = (props) => {
     const headerSprite = document.querySelector(`.${optionName}`);
     headerSprite.classList.add("correct-guess");
     document.getElementById(`${optionName}`).classList.remove("hide-hitbox");
-    console.log(option.parentNode);
+    checkWin();
   }
 
   function wrongGuess() {
@@ -43,6 +36,21 @@ const WaldoImage = (props) => {
         }, 1000);
       }
     }
+  }
+
+  function checkWin() {
+    const sprites = document.querySelectorAll("#sprite-container img");
+    for (let i = 0; i < sprites.length; i++) {
+      if (!sprites[i].classList.contains("correct-guess")) {
+        return;
+      }
+    }
+    const timer = document.getElementById("highscore-timer");
+    timer.remove();
+    setTimeout(() => {
+      setScore(timer.textContent);
+      setVictory(true);
+    }, 1000);
   }
 
   function handleClick(pos) {
@@ -61,7 +69,6 @@ const WaldoImage = (props) => {
   }
 
   function displayMenu(pos) {
-    console.log(pos.target);
     if (spriteMenu.classList.contains("hideSprites")) {
       spriteMenu.classList.toggle("hideSprites");
       spriteMenu.classList.toggle("showSprites");
