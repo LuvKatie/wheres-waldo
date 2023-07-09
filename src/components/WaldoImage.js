@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useEffect } from "react";
+import React, { useRef, useContext } from "react";
 import "../styles/waldoimage.css";
 import pokemonWaldo from "../images/pokemon.jpg";
 import { AppContext } from "../ContextProvider";
